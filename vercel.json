@@ -1,0 +1,19 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "./app.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/"
+    }
+  ],
+  "env": {
+    "PORT": "4444",
+    "MONGODB": "mongodb+srv://KirillVN:8vFEELMxEJJiViRI@blog-cluster.swcf0a7.mongodb.net/blog?retryWrites=true&w=majority"
+  }
+}
