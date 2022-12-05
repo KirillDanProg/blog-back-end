@@ -1,5 +1,4 @@
 import express from "express"
-import config from "config"
 import mongoose from "mongoose"
 import {authRouter, postsRouter} from "./routes/index.js";
 import checkAuth from "./utils/checkAuth.js";
@@ -7,7 +6,7 @@ import {loginValidation, authValidation, createPostValidation} from "./validatio
 import multer from "multer"
 import cors from "cors";
 
-const PORT = config.get("port") || 4444
+const PORT = process.env.PORT || 4444
 
 export const app = express()
 app.use(cors())
@@ -49,7 +48,7 @@ app.get("/posts/:id", postsRouter.getPost)
 
 async function start() {
     try {
-        await mongoose.connect(config.get("mongooseUri"))
+        await mongoose.connect(process.env.MONGO_DB)
         app.listen(PORT, () => {
             console.log(`server has been started on port ${PORT}`)
         })
