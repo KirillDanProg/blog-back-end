@@ -5,6 +5,9 @@ import checkAuth from "./utils/checkAuth.js";
 import {loginValidation, authValidation, createPostValidation} from "./validations/validations.js";
 import multer from "multer"
 import cors from "cors";
+import dotenv from "dotenv"
+
+dotenv.config()
 
 const PORT = process.env.PORT || 4444
 
