@@ -4,10 +4,7 @@
   "description": "",
   "main": "app.js",
   "type": "module",
-  "engines": {
-    "node": "14.x"
-  },
-  "scripts": {
+   "scripts": {
     "start": "node app.js",
     "server": "nodemon app.js"
   },
