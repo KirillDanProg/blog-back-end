@@ -30,7 +30,7 @@ export const register = async (req, res) => {
             token
         })
     } catch (e) {
-        errorsHandler(res, "Не удалось зарегистрироваться")
+        errorsHandler(res, 500, "Не удалось зарегистрироваться")
     }
 }
 
