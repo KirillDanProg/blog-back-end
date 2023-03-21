@@ -1,4 +1,0 @@
-{
-  "port": 4444,
-  "mongooseUri": "mongodb+srv://KirillVN:8vFEELMxEJJiViRI@blog-cluster.swcf0a7.mongodb.net/blog?retryWrites=true&w=majority"
-}

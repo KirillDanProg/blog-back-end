@@ -1,0 +1,11 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.CommentModel = exports.ProfileModel = exports.UserModel = exports.PostModel = void 0;
+var Post_1 = require("./Post/Post");
+Object.defineProperty(exports, "PostModel", { enumerable: true, get: function () { return Post_1.PostModel; } });
+var User_1 = require("./User/User");
+Object.defineProperty(exports, "UserModel", { enumerable: true, get: function () { return User_1.UserModel; } });
+var Profile_1 = require("./Profile/Profile");
+Object.defineProperty(exports, "ProfileModel", { enumerable: true, get: function () { return Profile_1.ProfileModel; } });
+var Comment_1 = require("./Comment/Comment");
+Object.defineProperty(exports, "CommentModel", { enumerable: true, get: function () { return Comment_1.CommentModel; } });
