@@ -11,17 +11,19 @@ export const commentPost = async (req: Request, res: Response) => {
         const commentText = req.body.value
         const token = req.headers.authorization
         const data= token && jwt.decode(token.slice(7)) as jwt.JwtPayload
-
         if (post && data) {
             const userId = data._id
+            const user = await UserModel.findById(userId)
             const newComment = new CommentModel({
                 userId,
-                text: commentText
+                text: commentText,
+                avatar: `http://localhost:4444${user?.avatar}`,
+                userName: user?.userName
             })
             const comment = await newComment.save()
             post.comments.push(comment)
             const updatedPost = await PostModel.findOneAndUpdate({_id: postId}, post, {new: true})
-            res.status(201).json(updatedPost)
+            res.status(201).json(updatedPost?.comments)
         } else {
             errorsHandler(res, 404, "Статья не найдена")
         }

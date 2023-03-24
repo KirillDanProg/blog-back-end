@@ -6,6 +6,7 @@ import express from "express";
 import {createPostValidation} from "../../validations";
 import checkAuth from "../../utils/checkAuth";
 import {commentPost} from "./commentPost";
+import {getComments} from "./getComments";
 
 
 export const postRouter = express.Router()
@@ -16,3 +17,4 @@ postRouter.put('/:id', checkAuth, updatePost)
 postRouter.delete('/:id', checkAuth, deletePost)
 postRouter.get('/:id', checkAuth, getPost)
 postRouter.post('/:id/comments', checkAuth, commentPost)
+postRouter.get('/:id/comments', getComments)

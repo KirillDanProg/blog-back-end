@@ -1,5 +1,4 @@
 import mongoose from "mongoose"
-import {CommentType} from "../Comment/Comment";
 
 export const PostSchema = new mongoose.Schema({
         title: {
@@ -24,6 +23,8 @@ export const PostSchema = new mongoose.Schema({
                 {
                     userId: mongoose.Schema.Types.ObjectId,
                     text: String,
+                    avatar: String,
+                    userName: String
                 }
             ],
             default: []

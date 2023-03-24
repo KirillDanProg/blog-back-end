@@ -25,14 +25,17 @@ const commentPost = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
         const data = token && jsonwebtoken_1.default.decode(token.slice(7));
         if (post && data) {
             const userId = data._id;
+            const user = yield models_1.UserModel.findById(userId);
             const newComment = new models_1.CommentModel({
                 userId,
-                text: commentText
+                text: commentText,
+                avatar: `http://localhost:4444${user === null || user === void 0 ? void 0 : user.avatar}`,
+                userName: user === null || user === void 0 ? void 0 : user.userName
             });
             const comment = yield newComment.save();
             post.comments.push(comment);
             const updatedPost = yield models_1.PostModel.findOneAndUpdate({ _id: postId }, post, { new: true });
-            res.status(201).json(updatedPost);
+            res.status(201).json(updatedPost === null || updatedPost === void 0 ? void 0 : updatedPost.comments);
         }
         else {
             (0, errorsHandler_1.errorsHandler)(res, 404, "Статья не найдена");

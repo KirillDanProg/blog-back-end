@@ -28,6 +28,8 @@ exports.PostSchema = new mongoose_1.default.Schema({
             {
                 userId: mongoose_1.default.Schema.Types.ObjectId,
                 text: String,
+                avatar: String,
+                userName: String
             }
         ],
         default: []

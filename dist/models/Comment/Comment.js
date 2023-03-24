@@ -15,6 +15,8 @@ exports.CommentSchema = new mongoose_1.default.Schema({
         ref: "User",
         required: true
     },
+    userName: String,
+    avatar: String,
 }, {
     timestamps: true
 });
