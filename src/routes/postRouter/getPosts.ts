@@ -1,11 +1,16 @@
 import {Response, Request} from "express";
 import {PostModel} from "../../models";
 import {errorsHandler} from "../../utils/errorsHandler";
+import {ResponseWithPaginationRes} from "../../utils/paginatedResults";
 
-export const getPosts = async (req: Request, res: Response) => {
+export const getPosts = async (req: Request, res: ResponseWithPaginationRes) => {
     try {
         const posts = await PostModel.find()
-        res.json(posts)
+        if(req.query.page || req.query.limit) {
+            res.json(res.paginatedResults)
+        } else {
+            res.json(posts)
+        }
     } catch (e) {
         errorsHandler(res, 500, "Не удалось загрузить статьи")
     }

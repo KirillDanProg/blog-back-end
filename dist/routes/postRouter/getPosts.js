@@ -15,7 +15,12 @@ const errorsHandler_1 = require("../../utils/errorsHandler");
 const getPosts = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const posts = yield models_1.PostModel.find();
-        res.json(posts);
+        if (req.query.page || req.query.limit) {
+            res.json(res.paginatedResults);
+        }
+        else {
+            res.json(posts);
+        }
     }
     catch (e) {
         (0, errorsHandler_1.errorsHandler)(res, 500, "Не удалось загрузить статьи");

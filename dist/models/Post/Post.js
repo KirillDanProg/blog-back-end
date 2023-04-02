@@ -23,15 +23,8 @@ exports.PostSchema = new mongoose_1.default.Schema({
         ref: "User",
         required: true
     },
-    comments: {
-        type: [
-            {
-                userId: mongoose_1.default.Schema.Types.ObjectId,
-                text: String,
-                avatar: String,
-                userName: String
-            }
-        ],
+    commentIds: {
+        type: Array,
         default: []
     },
     imageUrl: String,

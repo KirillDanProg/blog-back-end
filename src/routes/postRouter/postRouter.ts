@@ -7,11 +7,12 @@ import {createPostValidation} from "../../validations";
 import checkAuth from "../../utils/checkAuth";
 import {commentPost} from "./commentPost";
 import {getComments} from "./getComments";
+import {paginatedResults} from "../../utils/paginatedResults";
 
 
 export const postRouter = express.Router()
 
-postRouter.get('/', getPosts)
+postRouter.get('/', paginatedResults, getPosts)
 postRouter.post('/', checkAuth, createPostValidation, createPost)
 postRouter.put('/:id', checkAuth, updatePost)
 postRouter.delete('/:id', checkAuth, deletePost)

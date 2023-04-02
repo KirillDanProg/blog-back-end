@@ -23,6 +23,7 @@ const routes_1 = require("./routes");
 const checkAuth_1 = __importDefault(require("./utils/checkAuth"));
 const models_1 = require("./models");
 const helpers_1 = require("./utils/helpers");
+const commentRouter_1 = require("./routes/commentRouter/commentRouter");
 dotenv_1.default.config();
 const PORT = process.env.PORT || 4444;
 exports.app = (0, express_1.default)();
@@ -33,7 +34,7 @@ exports.app.use('/uploads', express_1.default.static('uploads'));
 exports.app.use('/auth', routes_1.authRouter);
 exports.app.use('/profile', routes_1.profileRouter);
 exports.app.use('/posts', routes_1.postRouter);
-// app.get('/posts', getPosts)
+exports.app.use('/comments', commentRouter_1.commentRouter);
 const storage = multer_1.default.diskStorage({
     "destination": (req, file, cb) => {
         cb(null, 'uploads');

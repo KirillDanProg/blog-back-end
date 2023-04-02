@@ -9,6 +9,7 @@ import checkAuth from "./utils/checkAuth";
 import { UserModel } from './models';
 import { getUserData } from "./utils/helpers";
 import {Request, Response} from "express"
+import { commentRouter } from './routes/commentRouter/commentRouter';
 
 dotenv.config()
 const PORT = process.env.PORT || 4444
@@ -21,7 +22,7 @@ app.use('/uploads', express.static('uploads'))
 app.use('/auth', authRouter)
 app.use('/profile', profileRouter)
 app.use('/posts', postRouter)
-// app.get('/posts', getPosts)
+app.use('/comments', commentRouter)
 
 const storage = multer.diskStorage({
     "destination": (req, file, cb) => {
