@@ -15,6 +15,11 @@ exports.CommentSchema = new mongoose_1.default.Schema({
         ref: "User",
         required: true
     },
+    postId: {
+        type: String,
+        ref: "Post",
+        required: true
+    },
     userName: String,
     avatar: String,
 }, {

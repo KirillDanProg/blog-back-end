@@ -8,7 +8,7 @@ export const getComments = async (req: Request, res: Response) => {
         const post = await PostModel.findById(postId)
         if(post) {
             res.status(200)
-                .json(post.comments)
+                .json(post.commentIds)
         } else {
             errorsHandler(res, 404, "Статья не найдена")
         }

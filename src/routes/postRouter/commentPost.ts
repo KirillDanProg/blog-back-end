@@ -16,14 +16,15 @@ export const commentPost = async (req: Request, res: Response) => {
             const user = await UserModel.findById(userId)
             const newComment = new CommentModel({
                 userId,
+                postId,
                 text: commentText,
                 avatar: `http://localhost:4444${user?.avatar}`,
                 userName: user?.userName
             })
             const comment = await newComment.save()
-            post.comments.push(comment)
+            post.commentIds.push(comment._id)
             const updatedPost = await PostModel.findOneAndUpdate({_id: postId}, post, {new: true})
-            res.status(201).json(updatedPost?.comments)
+            res.status(201).json(updatedPost?.commentIds)
         } else {
             errorsHandler(res, 404, "Статья не найдена")
         }

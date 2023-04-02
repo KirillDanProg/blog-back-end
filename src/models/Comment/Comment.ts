@@ -18,10 +18,11 @@ export const CommentSchema = new mongoose.Schema({
             ref: "User",
             required: true
         },
-        // postId: {
-        //     type: String,
-        //     required: true
-        // },
+        postId: {
+            type: String,
+            ref: "Post",
+            required: true
+        },
         userName: String,
         avatar: String,
     },
