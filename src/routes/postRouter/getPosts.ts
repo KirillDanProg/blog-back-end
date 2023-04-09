@@ -5,12 +5,7 @@ import {ResponseWithPaginationRes} from "../../utils/paginatedResults";
 
 export const getPosts = async (req: Request, res: ResponseWithPaginationRes) => {
     try {
-        const posts = await PostModel.find()
-        if(req.query.page || req.query.limit) {
-            res.json(res.paginatedResults)
-        } else {
-            res.json(posts)
-        }
+        res.json(res.paginatedSortedResults)
     } catch (e) {
         errorsHandler(res, 500, "Не удалось загрузить статьи")
     }
