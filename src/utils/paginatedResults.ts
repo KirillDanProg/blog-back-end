@@ -30,7 +30,7 @@ export const paginatedResults = async (req: Request, res: ResponseWithPagination
             .sort(mySort)
             .limit(limit)
             .skip(skipIndex)
-            .exec();
+            .exec()
         res.paginatedSortedResults = paginatedSortedResult
         next();
     } catch (e) {
